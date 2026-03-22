@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: ggtowndb-container
+    environment:
+      POSTGRES_USER: kamivision
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ggtown_db
+    ports:
+      - "5433:5432"
+
+  backend:
+    build: ./server
+    container_name: ggtownserver-container
+    command: sh -c "gunicorn town_proj.wsgi --bind 0.0.0:8000 --reload"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./server:/app
+    depends_on:
+      - db

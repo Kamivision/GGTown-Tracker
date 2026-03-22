@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-vdct9^o(rh5c^_u#ndb)iky26d91o=s&yvj$2z=6t+yz$cc9e6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '0.0.0.0']
+
+AUTH_USER_MODEL = "user_app.AppUser"
 
 
 # Application definition
@@ -37,6 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'task_app',
+    'user_app',
+    'townie_app',
+    'dashboard_app',
 ]
 
 MIDDLEWARE = [
@@ -74,8 +82,12 @@ WSGI_APPLICATION = 'town_proj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ggtown_db',
+        "HOST": "ggtowndb-container",
+        "USER": "kamivision",
+        "PASSWORD": "password",      
+        "PORT":'5432'
     }
 }
 
