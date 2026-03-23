@@ -22,17 +22,18 @@ const AuthForm = ({setUser}) => {
         setCreate(true)
         setEmail('')
         setPassword('')
-        navigate('/home/')
+
+        // navigate('/home/')
     }
 
     return (
         <>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} className="AuthForm">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label></Form.Label>
                     <Form.Control 
                         type="email" 
-                        placeholder="Enter email" 
+                        placeholder="Enter email address" 
                         value={email}
                         onChange={(e)=>setEmail(e.target.value)}
                     />
@@ -42,7 +43,7 @@ const AuthForm = ({setUser}) => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label></Form.Label>
                     <Form.Control 
                         type="password" 
                         placeholder="Password" 
