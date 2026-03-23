@@ -6,13 +6,15 @@ import Card from 'react-bootstrap/Card';
 import AuthForm from "../components/AuthForm";
 
 const HomePage = () => {
-    const {setUser} = useOutletContext()
+    const {setUser, create} = useOutletContext()
+    
 
     return (
         <>
             <Card className="UserForm">
-                <Card.Body><h2>Sign In or Create an Account to Save Your Progress!!</h2>
-                <AuthForm setUser={setUser} /></Card.Body>
+                <Card.Body>
+                    <AuthForm setUser={setUser} />
+                </Card.Body>
             </Card>
         </>
     )

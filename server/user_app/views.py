@@ -9,14 +9,15 @@ from rest_framework import status as s
 
 # Create your views here.
 class CreateUser(APIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    authentication_classes = []
+    permission_classes = []
 
     def post(self, request):
         data = request.data
         data['username'] = request.data.get('email')
-        new_user = AppUser.objects.create_user(**data)
+        
         try:
+            new_user = AppUser.objects.create_user(**data)
             new_user.full_clean()
             new_user.save()
             token = Token.objects.create(user=new_user)
@@ -33,8 +34,8 @@ class LogIn(APIView):
         data['username'] = request.data.get('email')
         user = authenticate(username=data.get('username'), password=data.get("password"))
         if user:
-            Token.objects.get_or_create(user=user)
-            return Response({"token":user.auth_token.key, "email":user.email})
+            token, _ = Token.objects.get_or_create(user=user)
+            return Response({"token":token.key, "email":user.email})
         else:
             return Response("No user matching credentials", status=s.HTTP_404_NOT_FOUND)
 

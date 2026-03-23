@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { handleUserAuth } from '../utilities';
 
 const AuthForm = ({setUser}) => {
 
@@ -10,7 +11,7 @@ const AuthForm = ({setUser}) => {
     const [create, setCreate] = useState(true)
     const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
         let userDict = {
             email:email,
@@ -18,17 +19,18 @@ const AuthForm = ({setUser}) => {
         }
         let method = create ? 'CREATE ACCT' : 'LOGIN ACCT'
         console.log(userDict, method)
-        setUser(userDict.email)
+        let user = await handleUserAuth(userDict, create)
+        setUser(user)
         setCreate(true)
         setEmail('')
         setPassword('')
-
-        // navigate('/home/')
+        navigate('/home')
     }
 
     return (
         <>
             <Form onSubmit={handleSubmit} className="AuthForm">
+                <Form.Label><h2>{create ? "Create an Account" : "Log In"} to Save Your Progress!!</h2></Form.Label>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label></Form.Label>
                     <Form.Control 
@@ -52,10 +54,10 @@ const AuthForm = ({setUser}) => {
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check 
-                        type="checkbox" 
-                        label={create ? "CREATE ACCOUNT" : "LOG IN"} 
+                <Form.Group className="switch">
+                    <Form.Check
+                        type="switch"
+                        label={create ? "Log In?" : "Welcome Back!"}
                         checked={create}
                         onChange={(e)=>setCreate(e.target.checked)}
                     />

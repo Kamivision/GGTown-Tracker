@@ -1,4 +1,4 @@
-#root {
+body {
   width: 1126px;
   max-width: 100%;
   margin: 0 auto;
@@ -13,8 +13,14 @@
 .UserForm {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 15px;
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
+}
+
+.UserForm .switch {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px;
 }
