@@ -1,13 +1,1157 @@
 [
   {
     "model": "townie_app.townie",
+    "pk": 1,
+    "fields": {
+      "name": "Addie",
+      "quest_type": "Build",
+      "quest": "Fish N' Chip Shop",
+      "quest_amount": "1",
+      "original_quest": "1 Fish N' Chip Shop"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 2,
+    "fields": {
+      "name": "Agent Nay-Nay",
+      "quest_type": "Discover",
+      "quest": "Evictor",
+      "quest_amount": "1",
+      "original_quest": "Evictor"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 3,
+    "fields": {
+      "name": "Agent Peanut",
+      "quest_type": "Discover",
+      "quest": "Key to the City",
+      "quest_amount": "1",
+      "original_quest": "1 Key to the City"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 4,
+    "fields": {
+      "name": "Agent Peppermint",
+      "quest_type": "Other",
+      "quest": "Complete Export App Missions",
+      "quest_amount": "50",
+      "original_quest": "Complete 50 Export App Missions"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 5,
+    "fields": {
+      "name": "Agent Toffee",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "50000",
+      "original_quest": "50000 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 6,
+    "fields": {
+      "name": "Amber",
+      "quest_type": "Build",
+      "quest": "Lotus Flower",
+      "quest_amount": "2",
+      "original_quest": "2 Lotus Flower"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 7,
+    "fields": {
+      "name": "Anya",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "100",
+      "original_quest": "100 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 8,
+    "fields": {
+      "name": "Asaki",
+      "quest_type": "Jailbreak",
+      "quest": "ASAKI",
+      "quest_amount": "1",
+      "original_quest": "ASAKI"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 9,
+    "fields": {
+      "name": "Baldo",
+      "quest_type": "Other",
+      "quest": "None (Tutorial)",
+      "quest_amount": "1",
+      "original_quest": "None (Tutorial)"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 10,
+    "fields": {
+      "name": "Bale",
+      "quest_type": "Craft",
+      "quest": "Bread",
+      "quest_amount": "40",
+      "original_quest": "40 Bread"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 11,
+    "fields": {
+      "name": "Beldar",
+      "quest_type": "Pay",
+      "quest": "EGO",
+      "quest_amount": "200",
+      "original_quest": "200 EGO"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 12,
+    "fields": {
+      "name": "Bob",
+      "quest_type": "Other",
+      "quest": "Happy Accidents",
+      "quest_amount": "25",
+      "original_quest": "25 Happy Accidents"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 13,
+    "fields": {
+      "name": "Bonita",
+      "quest_type": "Other",
+      "quest": "High Five Bonita",
+      "quest_amount": "1",
+      "original_quest": "High Five Bonita"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 14,
+    "fields": {
+      "name": "Brundle",
+      "quest_type": "Discover",
+      "quest": "Sewer TownCo. Bunker Entrance",
+      "quest_amount": "1",
+      "original_quest": "Sewer TownCo. Bunker Entrance"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 15,
+    "fields": {
+      "name": "Bumble",
+      "quest_type": "Build",
+      "quest": "Vehicle Racks",
+      "quest_amount": "2",
+      "original_quest": "2 Vehicle Racks"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 16,
+    "fields": {
+      "name": "Chaz",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "150",
+      "original_quest": "150 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 17,
+    "fields": {
+      "name": "Chomper",
+      "quest_type": "Discover",
+      "quest": "Favorite Coin",
+      "quest_amount": "1",
+      "original_quest": "Favorite Coin"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 18,
+    "fields": {
+      "name": "Chum",
+      "quest_type": "Other",
+      "quest": "Catch Fish",
+      "quest_amount": "50",
+      "original_quest": "Catch 50 Fish"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 19,
+    "fields": {
+      "name": "Cobalt",
+      "quest_type": "Craft",
+      "quest": "Encabulator Cube",
+      "quest_amount": "10",
+      "original_quest": "10 Encabulator Cube"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 20,
+    "fields": {
+      "name": "Cogz",
+      "quest_type": "Build",
+      "quest": "Bleep Bloop Arcade",
+      "quest_amount": "1",
+      "original_quest": "1 Bleep Bloop Arcade"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 21,
+    "fields": {
+      "name": "Cordelia",
+      "quest_type": "Build",
+      "quest": "Restaurant",
+      "quest_amount": "1",
+      "original_quest": "1 Restaurant"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 22,
+    "fields": {
+      "name": "Damo",
+      "quest_type": "Build",
+      "quest": "Tavern",
+      "quest_amount": "1",
+      "original_quest": "1 Tavern"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 23,
+    "fields": {
+      "name": "Dana",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "550",
+      "original_quest": "550 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 24,
+    "fields": {
+      "name": "DJ Abner",
+      "quest_type": "Build",
+      "quest": "Subway Stations",
+      "quest_amount": "2",
+      "original_quest": "2 Subway Stations"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 25,
+    "fields": {
+      "name": "Drangus",
+      "quest_type": "Purchase",
+      "quest": "Olliepop Skateboard",
+      "quest_amount": "3",
+      "original_quest": "3 Olliepop Skateboard"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 26,
+    "fields": {
+      "name": "Dusty",
+      "quest_type": "Discover",
+      "quest": "Jars of \"Jam\"",
+      "quest_amount": "4",
+      "original_quest": "4 Jars of \"Jam\""
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 27,
+    "fields": {
+      "name": "Eddy 210",
+      "quest_type": "Craft",
+      "quest": "Metal Beams",
+      "quest_amount": "32",
+      "original_quest": "32 Metal Beams"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 28,
+    "fields": {
+      "name": "Eeowna",
+      "quest_type": "Jailbreak",
+      "quest": "CHAOS",
+      "quest_amount": "1",
+      "original_quest": "CHAOS"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 29,
+    "fields": {
+      "name": "Elliot",
+      "quest_type": "Build",
+      "quest": "Water Bubbler",
+      "quest_amount": "1",
+      "original_quest": "1 Water Bubbler"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 30,
+    "fields": {
+      "name": "Emily",
+      "quest_type": "Craft",
+      "quest": "No Nonsense Nigiri",
+      "quest_amount": "20",
+      "original_quest": "20 No Nonsense Nigiri"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 31,
+    "fields": {
+      "name": "Eva",
+      "quest_type": "Build",
+      "quest": "Trader Area or Small Trader Area</spa",
+      "quest_amount": "1",
+      "original_quest": "1 Trader Area or 1 Small Trader Area</spa"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 32,
+    "fields": {
+      "name": "Felicity",
+      "quest_type": "Build",
+      "quest": "Groffle Ride",
+      "quest_amount": "1",
+      "original_quest": "1 Groffle Ride"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 33,
+    "fields": {
+      "name": "Fletch",
+      "quest_type": "Build",
+      "quest": "Small House",
+      "quest_amount": "4",
+      "original_quest": "4 Small House"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 34,
+    "fields": {
+      "name": "Garry",
+      "quest_type": "Build",
+      "quest": "Hat Shop",
+      "quest_amount": "1",
+      "original_quest": "1 Hat Shop"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 35,
+    "fields": {
+      "name": "Goober",
+      "quest_type": "Build",
+      "quest": "Hot Springs",
+      "quest_amount": "1",
+      "original_quest": "1 Hot Springs"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 36,
+    "fields": {
+      "name": "Grep",
+      "quest_type": "Discover",
+      "quest": "Spare Charger",
+      "quest_amount": "1",
+      "original_quest": "1 Spare Charger"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 37,
+    "fields": {
+      "name": "Growlie",
+      "quest_type": "Discover",
+      "quest": "Big Bone",
+      "quest_amount": "1",
+      "original_quest": "1 Big Bone"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 38,
+    "fields": {
+      "name": "Grumbo",
+      "quest_type": "Other",
+      "quest": "Complete Export App Missions",
+      "quest_amount": "10",
+      "original_quest": "Complete 10 Export App Missions"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 39,
+    "fields": {
+      "name": "Haberdashi",
+      "quest_type": "Discover",
+      "quest": "Replacement Wraps",
+      "quest_amount": "1",
+      "original_quest": "Replacement Wraps"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 40,
+    "fields": {
+      "name": "Hamington",
+      "quest_type": "Other",
+      "quest": "Return wearing a fancy hat and clothes.",
+      "quest_amount": "1",
+      "original_quest": "Return wearing a fancy hat and clothes."
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 41,
+    "fields": {
+      "name": "Huck",
+      "quest_type": "Craft",
+      "quest": "Bricks",
+      "quest_amount": "20",
+      "original_quest": "20 Bricks"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 42,
+    "fields": {
+      "name": "Hugh Mahn",
+      "quest_type": "Sell",
+      "quest": "Deep Fried Gonut",
+      "quest_amount": "30",
+      "original_quest": "30 Deep Fried Gonut"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 43,
+    "fields": {
+      "name": "Ian Humam",
+      "quest_type": "Build",
+      "quest": "Apartments",
+      "quest_amount": "5",
+      "original_quest": "5 Apartments"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 44,
+    "fields": {
+      "name": "Irwin",
+      "quest_type": "Build",
+      "quest": "Chicken Coop",
+      "quest_amount": "2",
+      "original_quest": "2 Chicken Coop"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 45,
+    "fields": {
+      "name": "Isaac",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "25",
+      "original_quest": "25 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 46,
+    "fields": {
+      "name": "Jacob",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "600",
+      "original_quest": "600 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 47,
+    "fields": {
+      "name": "Jane",
+      "quest_type": "Build",
+      "quest": "Fitness Gym",
+      "quest_amount": "1",
+      "original_quest": "1 Fitness Gym"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 48,
+    "fields": {
+      "name": "Joe",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "15",
+      "original_quest": "15 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 49,
+    "fields": {
+      "name": "John",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "250",
+      "original_quest": "250 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 50,
+    "fields": {
+      "name": "Juniper",
+      "quest_type": "Build",
+      "quest": "Noodle Bar",
+      "quest_amount": "1",
+      "original_quest": "1 Noodle Bar"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 51,
+    "fields": {
+      "name": "Kaz",
+      "quest_type": "Build",
+      "quest": "Garbage Recycler",
+      "quest_amount": "1",
+      "original_quest": "1 Garbage Recycler"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 52,
+    "fields": {
+      "name": "Kinoko",
+      "quest_type": "Sell",
+      "quest": "Sausage Pizza",
+      "quest_amount": "20",
+      "original_quest": "20 Sausage Pizza"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 53,
+    "fields": {
+      "name": "Lance",
+      "quest_type": "Build",
+      "quest": "Fortune Teller",
+      "quest_amount": "1",
+      "original_quest": "1 Fortune Teller"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 54,
+    "fields": {
+      "name": "Lettie",
+      "quest_type": "Build",
+      "quest": "Firework Rockets",
+      "quest_amount": "3",
+      "original_quest": "3 Firework Rockets"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 55,
+    "fields": {
+      "name": "Lloyd",
+      "quest_type": "Build",
+      "quest": "Wiggly Friend",
+      "quest_amount": "1",
+      "original_quest": "1 Wiggly Friend"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 56,
+    "fields": {
+      "name": "Lode",
+      "quest_type": "Discover",
+      "quest": "Miners Pickaxe",
+      "quest_amount": "1",
+      "original_quest": "1 Miners Pickaxe"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 57,
+    "fields": {
+      "name": "Louie",
+      "quest_type": "Build",
+      "quest": "Garbage Bin",
+      "quest_amount": "2",
+      "original_quest": "2 Garbage Bin"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 58,
+    "fields": {
+      "name": "Malcolm",
+      "quest_type": "Other",
+      "quest": "Scare People",
+      "quest_amount": "30",
+      "original_quest": "Scare 30 People"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 59,
+    "fields": {
+      "name": "Mallory",
+      "quest_type": "Build",
+      "quest": "Hairdresser",
+      "quest_amount": "1",
+      "original_quest": "1 Hairdresser"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 60,
+    "fields": {
+      "name": "Mango",
+      "quest_type": "Build",
+      "quest": "Lamp post",
+      "quest_amount": "5",
+      "original_quest": "5 Lamp post"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 61,
+    "fields": {
+      "name": "Max Gains",
+      "quest_type": "Craft",
+      "quest": "Protein",
+      "quest_amount": "20",
+      "original_quest": "20 Protein"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 62,
+    "fields": {
+      "name": "Meadows",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "400",
+      "original_quest": "400 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 63,
+    "fields": {
+      "name": "Miho",
+      "quest_type": "Build",
+      "quest": "Maintenance Office",
+      "quest_amount": "1",
+      "original_quest": "1 Maintenance Office"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 64,
+    "fields": {
+      "name": "Miku",
+      "quest_type": "Build",
+      "quest": "Sweets N' Treats",
+      "quest_amount": "1",
+      "original_quest": "1 Sweets N' Treats"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 65,
+    "fields": {
+      "name": "Miss Bubbles",
+      "quest_type": "Jailbreak",
+      "quest": "BUBBLIES",
+      "quest_amount": "1",
+      "original_quest": "BUBBLIES"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 66,
+    "fields": {
+      "name": "Momoko",
+      "quest_type": "Build",
+      "quest": "Sushi Bar",
+      "quest_amount": "1",
+      "original_quest": "1 Sushi Bar"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 67,
+    "fields": {
+      "name": "Muggsy",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "50",
+      "original_quest": "50 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 68,
+    "fields": {
+      "name": "Ned",
+      "quest_type": "Other",
+      "quest": "Invite Townies",
+      "quest_amount": "25",
+      "original_quest": "Invite 25 Townies"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 69,
+    "fields": {
+      "name": "Nutmeg",
+      "quest_type": "Build",
+      "quest": "Ticket Pods",
+      "quest_amount": "2",
+      "original_quest": "2 Ticket Pods"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 70,
+    "fields": {
+      "name": "Oatcake",
+      "quest_type": "Sell",
+      "quest": "Pet Rock",
+      "quest_amount": "20",
+      "original_quest": "20 Pet Rock"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 71,
+    "fields": {
+      "name": "Petal",
+      "quest_type": "Other",
+      "quest": "Plant Flowers",
+      "quest_amount": "4",
+      "original_quest": "Plant 4 Flowers"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 72,
+    "fields": {
+      "name": "Pete",
+      "quest_type": "Build",
+      "quest": "Fast Food",
+      "quest_amount": "1",
+      "original_quest": "1 Fast Food"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 73,
+    "fields": {
+      "name": "Phoebe",
+      "quest_type": "Build",
+      "quest": "Tourism Hub",
+      "quest_amount": "1",
+      "original_quest": "1 Tourism Hub"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 74,
+    "fields": {
+      "name": "Pineseidon",
+      "quest_type": "Jailbreak",
+      "quest": "PINE",
+      "quest_amount": "1",
+      "original_quest": "PINE"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 75,
+    "fields": {
+      "name": "Poppi",
+      "quest_type": "Build",
+      "quest": "Candy Shop",
+      "quest_amount": "1",
+      "original_quest": "1 Candy Shop"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 76,
+    "fields": {
+      "name": "Priss",
+      "quest_type": "Discover",
+      "quest": "Hairbrush",
+      "quest_amount": "1",
+      "original_quest": "1 Hairbrush"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 77,
+    "fields": {
+      "name": "Ramona",
+      "quest_type": "Build",
+      "quest": "Day Spa",
+      "quest_amount": "1",
+      "original_quest": "1 Day Spa"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 78,
+    "fields": {
+      "name": "Rimu",
+      "quest_type": "Craft",
+      "quest": "Wood Frame",
+      "quest_amount": "30",
+      "original_quest": "30 Wood Frame"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 79,
+    "fields": {
+      "name": "Ronny",
+      "quest_type": "Other",
+      "quest": "Hire a mascot at the Tourism Hub",
+      "quest_amount": "1",
+      "original_quest": "Hire a mascot at the Tourism Hub"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 80,
+    "fields": {
+      "name": "Rusty",
+      "quest_type": "Discover",
+      "quest": "Oil Can",
+      "quest_amount": "3",
+      "original_quest": "3 Oil Can"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 81,
+    "fields": {
+      "name": "Sabine",
+      "quest_type": "",
+      "quest": "Go-Kart Zipper",
+      "quest_amount": "2",
+      "original_quest": "2 Go-Kart Zipper"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 82,
+    "fields": {
+      "name": "Sakura",
+      "quest_type": "Build",
+      "quest": "Tree",
+      "quest_amount": "8",
+      "original_quest": "8 Tree"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 83,
+    "fields": {
+      "name": "Sandra",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "100",
+      "original_quest": "100 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 84,
+    "fields": {
+      "name": "Scruffs",
+      "quest_type": "Build",
+      "quest": "Courier Building",
+      "quest_amount": "1",
+      "original_quest": "1 Courier Building"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 85,
+    "fields": {
+      "name": "Sidd",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "400",
+      "original_quest": "400 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 86,
+    "fields": {
+      "name": "Siggy",
+      "quest_type": "Build",
+      "quest": "Coffee Shop",
+      "quest_amount": "1",
+      "original_quest": "1 Coffee Shop"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 87,
+    "fields": {
+      "name": "Sir Loin",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "1000",
+      "original_quest": "1,000 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 88,
+    "fields": {
+      "name": "Slappy",
+      "quest_type": "Discover",
+      "quest": "Tuba",
+      "quest_amount": "1",
+      "original_quest": "1 Tuba"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 89,
+    "fields": {
+      "name": "Slowpoke",
+      "quest_type": "Pay",
+      "quest": "Coins",
+      "quest_amount": "500",
+      "original_quest": "500 Coins"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 90,
+    "fields": {
+      "name": "Snappy",
+      "quest_type": "Build",
+      "quest": "Portable Toilet",
+      "quest_amount": "3",
+      "original_quest": "3 Portable Toilet"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 91,
+    "fields": {
+      "name": "Snugs",
+      "quest_type": "Build",
+      "quest": "Cow Stall",
+      "quest_amount": "2",
+      "original_quest": "2 Cow Stall"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 92,
+    "fields": {
+      "name": "Spare Parts",
+      "quest_type": "Discover",
+      "quest": "Townie Navigation Module",
+      "quest_amount": "1",
+      "original_quest": "Townie Navigation Module"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 93,
+    "fields": {
+      "name": "Spooks",
+      "quest_type": "Discover",
+      "quest": "NecroNanaCon",
+      "quest_amount": "1",
+      "original_quest": "NecroNanaCon"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 94,
+    "fields": {
+      "name": "Sweeny-Pin",
+      "quest_type": "Discover",
+      "quest": "Red Balloons",
+      "quest_amount": "5",
+      "original_quest": "5 Red Balloons"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 95,
+    "fields": {
+      "name": "Tilly",
+      "quest_type": "Craft",
+      "quest": "Bottle of purple",
+      "quest_amount": "20",
+      "original_quest": "20 Bottle of purple"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 96,
+    "fields": {
+      "name": "Twoply",
+      "quest_type": "Other",
+      "quest": "Get Stinky!",
+      "quest_amount": "1",
+      "original_quest": "Get Stinky!"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 97,
+    "fields": {
+      "name": "Una",
+      "quest_type": "Build",
+      "quest": "Book Nook",
+      "quest_amount": "1",
+      "original_quest": "1 Book Nook"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 98,
+    "fields": {
+      "name": "Violet",
+      "quest_type": "Build",
+      "quest": "Diner",
+      "quest_amount": "1",
+      "original_quest": "1 Diner"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 99,
+    "fields": {
+      "name": "Wendy",
+      "quest_type": "Build",
+      "quest": "Town Bench",
+      "quest_amount": "2",
+      "original_quest": "2 Town Bench"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 100,
+    "fields": {
+      "name": "Wheels",
+      "quest_type": "Build",
+      "quest": "Courier Building",
+      "quest_amount": "1",
+      "original_quest": "1 Courier Building"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 101,
+    "fields": {
+      "name": "Whispy",
+      "quest_type": "Build",
+      "quest": "Jack-O'-Lantern",
+      "quest_amount": "3",
+      "original_quest": "3 Jack-O'-Lantern"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 102,
+    "fields": {
+      "name": "Wil",
+      "quest_type": "Sell",
+      "quest": "Book",
+      "quest_amount": "20",
+      "original_quest": "20 Book"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 103,
+    "fields": {
+      "name": "Wraps",
+      "quest_type": "Craft",
+      "quest": "Refined Mana",
+      "quest_amount": "20",
+      "original_quest": "20 Refined Mana"
+    }
+  },
+  {
+    "model": "townie_app.townie",
+    "pk": 104,
+    "fields": {
+      "name": "Xander",
+      "quest_type": "Build",
+      "quest": "Movie Theatre",
+      "quest_amount": "1",
+      "original_quest": "1 Movie Theatre"
+    }
+  },
+  {
+    "model": "townie_app.townie",
     "pk": 105,
     "fields": {
       "name": "Yaboi",
       "quest_type": "Build",
       "quest": "Photobooth",
-      "original_quest": "3  Photobooth",
-      "quest_amount": "3"
+      "quest_amount": "3",
+      "original_quest": "3 Photobooth"
     }
   }
 ]

@@ -2,6 +2,7 @@ import { api } from './utilities'
 import { useEffect, useState } from 'react'
 import { Outlet, useLoaderData } from 'react-router-dom'
 import './App.css'
+import NavBar from './components/NavBar'
 
 function App() {
   const [user, setUser] = useState(useLoaderData())
@@ -21,7 +22,8 @@ function App() {
 
   return (
     <>
-     <Outlet context={{ user, setUser }}/>
+      <NavBar /> 
+      <Outlet context={{ user, setUser }}/>
     </>
   )
 }

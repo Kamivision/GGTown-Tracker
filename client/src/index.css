@@ -24,3 +24,9 @@ body {
   justify-content: center;
   margin: 10px 0px;
 }
+
+.logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
