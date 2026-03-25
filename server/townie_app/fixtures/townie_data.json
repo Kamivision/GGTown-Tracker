@@ -1,0 +1,13 @@
+[
+  {
+    "model": "townie_app.townie",
+    "pk": 105,
+    "fields": {
+      "name": "Yaboi",
+      "quest_type": "Build",
+      "quest": "Photobooth",
+      "original_quest": "3  Photobooth",
+      "quest_amount": "3"
+    }
+  }
+]

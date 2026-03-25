@@ -6,3 +6,4 @@ class Townie(models.Model):
     quest_type = models.CharField(max_length=255, default='other')
     quest = models.CharField(max_length=255, default='unknown')
     quest_amount = models.CharField(max_length=255, default='1')
+    original_quest = models.CharField(max_length=255, default='unknown')

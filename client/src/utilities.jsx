@@ -5,22 +5,27 @@ export const api = axios.create({
 });
 
 export const userVerify = async () => {
-    let token = localStorage.getItem('token')
-    if (token) {
-        api.defaults.headers.common['Authorization'] = `Token ${token}`
-        let response = await api.get('users/')
-        if (response.status === 200) {
-            let user =response.data.email
-            console.log("User Verified")
-            return user
-        } else {
-            alert("User Not Verified")
-            console.error(response.data)
-            return null
-        }
+    const token = localStorage.getItem('token');
+    if (!token) {
+        return null;
     }
-    return null
-}
+    api.defaults.headers.common['Authorization'] = `Token ${token}`
+
+    try {
+    const response = await api.get('users/');
+    if (response.status === 200) {
+    return response.data.email;
+    }
+    return null;
+    } catch (error) {
+    if (error?.response?.status === 401) {
+    localStorage.removeItem('token');
+    delete api.defaults.headers.common['Authorization'];
+    return null;
+    }
+    throw error;
+    }
+};
 
 export const handleUserAuth = async( data, create ) => {
    
