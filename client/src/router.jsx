@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage"
 import Townies from "./pages/Townies"
 import App from "./App"
 import { userVerify } from './utilities'
+import Dashboard from './pages/Dashboard'
 
 const router = createBrowserRouter([
     {
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
              {
                 path:"townies",
                 element: <Townies />
-            }
+            },
+             {
+                path:"dashboard",
+                element: <Dashboard />
+            },
         ]
     }
 ])

@@ -43,3 +43,21 @@ export const handleUserAuth = async( data, create ) => {
         return null
     }
 }
+
+export const handleLogout = () => {
+    localStorage.removeItem('token');
+    delete api.defaults.headers.common['Authorization'];
+}
+
+export const fetchTownies = async () => {
+    try {
+        const response = await api.get('townies/');
+        if (response.status === 200) {
+            return response.data;
+        }
+        return [];
+    } catch (error) {
+        console.error('Error fetching townies:', error);
+        return [];
+    }
+}
