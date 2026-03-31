@@ -4,4 +4,4 @@ from .models import Townie
 class TownieSerializer(ModelSerializer):
     class Meta:
         model = Townie
-        fields = ['name', 'quest_type', 'quest_amount', 'quest']
+        fields = ['id', 'name', 'quest_type', 'quest_amount', 'quest']

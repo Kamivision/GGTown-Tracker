@@ -10,6 +10,9 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  background:
+    radial-gradient(circle at top, rgba(255, 189, 89, 0.2), transparent 30%),
+    linear-gradient(180deg, rgba(255, 248, 237, 1) 0%, rgba(241, 233, 216, 1) 100%);
 }
 
 .UserForm {
@@ -54,3 +57,163 @@ body {
   align-items: center;
   justify-self: center;
 } */
+
+.quest-dashboard-shell {
+  padding: 24px 20px 48px;
+}
+
+.quest-dashboard-header {
+  margin-bottom: 28px;
+}
+
+.quest-dashboard-kicker {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9e4d17;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.quest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.quest-card {
+  text-align: left;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(109, 68, 31, 0.18);
+  background: rgba(255, 252, 245, 0.94);
+  box-shadow: 0 18px 40px rgba(77, 45, 10, 0.12);
+}
+
+.quest-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.quest-card-header h2 {
+  margin: 0;
+}
+
+.quest-card-type {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a6f52;
+}
+
+.quest-card-copy {
+  margin: 0 0 10px;
+  min-height: 48px;
+}
+
+.quest-card-meta {
+  margin: 0 0 16px;
+  color: #6b5a47;
+}
+
+.quest-progress-row,
+.quest-form-row,
+.quest-chip-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quest-progress-row {
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.quest-progress-bar {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(222, 201, 171, 0.7);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.quest-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #d96524 0%, #ffb347 100%);
+}
+
+.quest-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.quest-input-group input {
+  border: 1px solid rgba(109, 68, 31, 0.28);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font: inherit;
+  background: #fffdf7;
+}
+
+.quest-primary-button,
+.quest-secondary-button,
+.quest-chip-button {
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.quest-primary-button,
+.quest-secondary-button {
+  padding: 12px 16px;
+  color: white;
+  background: linear-gradient(135deg, #b64816 0%, #e17c24 100%);
+}
+
+.quest-primary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.quest-chip-row {
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.quest-chip-button {
+  padding: 8px 12px;
+  background: #f4dfc1;
+  color: #7d4b1f;
+}
+
+.quest-empty-state,
+.quest-error-banner {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 252, 245, 0.9);
+  border: 1px solid rgba(109, 68, 31, 0.18);
+}
+
+.quest-error-banner {
+  margin-bottom: 18px;
+  color: #a12d1e;
+}
+
+@media (max-width: 720px) {
+  .quest-form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quest-progress-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

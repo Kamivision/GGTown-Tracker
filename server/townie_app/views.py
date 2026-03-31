@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status as s
-from .serializers import TownieSerializer, Townie
+from .models import Townie
+from .serializers import TownieSerializer
 from dashboard_app.models import Dashboard, Dashboard_item
 
 # Create your views here.

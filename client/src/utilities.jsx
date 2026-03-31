@@ -74,3 +74,38 @@ export const fetchATownie = async (name) => {
         return null;
     }
 }
+
+export const fetchTrackedQuests = async () => {
+    try {
+        const response = await api.get('tasks/');
+        if (response.status === 200) {
+            return response.data;
+        }
+        return [];
+    } catch (error) {
+        console.error('Error fetching tracked quests:', error);
+        return [];
+    }
+}
+
+export const createTrackedQuest = async (townieId, currentAmount = 0) => {
+    const response = await api.post('tasks/', {
+        townie_id: townieId,
+        current_amount: currentAmount,
+    });
+    return response.data;
+}
+
+export const updateTrackedQuestAmount = async (questProgressId, currentAmount) => {
+    const response = await api.patch(`tasks/${questProgressId}/`, {
+        current_amount: currentAmount,
+    });
+    return response.data;
+}
+
+export const incrementTrackedQuestAmount = async (questProgressId, amount) => {
+    const response = await api.post(`tasks/${questProgressId}/increment/`, {
+        amount,
+    });
+    return response.data;
+}
