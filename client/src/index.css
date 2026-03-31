@@ -46,3 +46,11 @@ body {
   background-color: blue;
   text-decoration-color: chocolate;
 }
+
+/* #townieDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+} */

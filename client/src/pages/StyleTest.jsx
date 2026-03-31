@@ -29,9 +29,9 @@ export default function StyleTest() {
       return (
         <>
             <h1>Your Townies:</h1>
-            <div className='box-shadow-lg rounded-lg p-9 bg-sky-400 m-8'>
-                <table className="table-auto border-orange-500 border-spacing-1" id="towniesTable">
-                    <thead className="text-taupe-200 text-shadow-lg text-shadow-black text-2xl">
+            <div className='shadow-lg shadow-black rounded-lg p-9 bg-sky-400 m-8'>
+                <table className="table-auto border-orange-500 border-spacing-1 shadow-lg shadow-black" id="towniesTable">
+                    <thead className="text-taupe-200 text-shadow-lg text-shadow-black text-2xl bg-orange-500">
                     <tr>
                         <th className="border-orange-500 border-4">Name</th>
                         <th className="border-orange-500 border-4">Quest Type</th>
