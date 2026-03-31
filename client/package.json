@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-    "scripts": {
+  "scripts": {
     "dev": "vite --host",
     "build": "vite build",
     "watcher": "vite build --watch",
@@ -11,6 +11,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@syncfusion/ej2": "^19.4.48",
+    "@syncfusion/ej2-react-dropdowns": "^19.4.52",
+    "@syncfusion/ej2-react-grids": "^33.1.46",
+    "@syncfusion/ej2-react-inputs": "^19.4.52",
     "@tailwindcss/vite": "^4.2.2",
     "axios": "^1.13.6",
     "bootstrap": "^5.3.8",

@@ -61,3 +61,16 @@ export const fetchTownies = async () => {
         return [];
     }
 }
+
+export const fetchATownie = async (name) => {
+    try {
+        const response = await api.get(`townies/${name}/`);
+        if (response.status === 200) {
+            return response.data;
+        }
+        return null;
+    } catch (error) {
+        console.error('Error fetching townie:', error);
+        return null;
+    }
+}
