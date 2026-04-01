@@ -34,3 +34,10 @@ class Townie_by_quest_type(APIView):
     def get(self, request, quest_type):
         townies = Townie.objects.filter(quest_type=quest_type.title())
         return Response(TownieSerializer(townies, many=True).data, status=s.HTTP_200_OK)
+    
+class Create_townie(APIView):
+    def post(self, request):
+        serializer = TownieSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=s.HTTP_201_CREATED)
