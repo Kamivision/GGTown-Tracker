@@ -103,6 +103,17 @@ export const updateTrackedQuestAmount = async (questProgressId, currentAmount) =
     return response.data;
 }
 
+export const updateTrackedQuestPin = async (questProgressId, isPinned) => {
+    const response = await api.patch(`tasks/${questProgressId}/`, {
+        is_pinned: isPinned,
+    });
+    return response.data;
+}
+
+export const deleteTrackedQuest = async (questProgressId) => {
+    await api.delete(`tasks/${questProgressId}/`);
+}
+
 export const incrementTrackedQuestAmount = async (questProgressId, amount) => {
     const response = await api.post(`tasks/${questProgressId}/increment/`, {
         amount,

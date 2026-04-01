@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import {
     createTrackedQuest,
+    deleteTrackedQuest,
     fetchTownies,
     fetchTrackedQuests,
     incrementTrackedQuestAmount,
+    updateTrackedQuestPin,
     updateTrackedQuestAmount,
 } from '../utilities';
 
@@ -13,12 +15,11 @@ const parseQuestAmount = (questAmount) => {
     return Number.isInteger(parsedAmount) && parsedAmount > 0 ? parsedAmount : 0;
 };
 
-
 export default function TownieDisplay({ user }) {
     const [townies, setTownies] = useState([]);
     const [trackedQuests, setTrackedQuests] = useState({});
     const [amountInputs, setAmountInputs] = useState({});
-    const [incrementInputs, setIncrementInputs] = useState({});
+    const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
@@ -49,17 +50,14 @@ export default function TownieDisplay({ user }) {
     const syncTrackedQuestState = (quests) => {
         const nextTrackedQuests = {};
         const nextAmountInputs = {};
-        const nextIncrementInputs = {};
 
         quests.forEach((quest) => {
             nextTrackedQuests[quest.townie_id] = quest;
             nextAmountInputs[quest.id] = String(quest.current_amount);
-            nextIncrementInputs[quest.id] = '1';
         });
 
         setTrackedQuests(nextTrackedQuests);
         setAmountInputs(nextAmountInputs);
-        setIncrementInputs(nextIncrementInputs);
     };
 
     const upsertTrackedQuest = (quest) => {
@@ -71,10 +69,19 @@ export default function TownieDisplay({ user }) {
             ...currentAmountInputs,
             [quest.id]: String(quest.current_amount),
         }));
-        setIncrementInputs((currentIncrementInputs) => ({
-            ...currentIncrementInputs,
-            [quest.id]: currentIncrementInputs[quest.id] ?? '1',
-        }));
+    };
+
+    const removeTrackedQuest = (quest) => {
+        setTrackedQuests((currentTrackedQuests) => {
+            const nextTrackedQuests = { ...currentTrackedQuests };
+            delete nextTrackedQuests[quest.townie_id];
+            return nextTrackedQuests;
+        });
+        setAmountInputs((currentAmountInputs) => {
+            const nextAmountInputs = { ...currentAmountInputs };
+            delete nextAmountInputs[quest.id];
+            return nextAmountInputs;
+        });
     };
 
     const handleTrackQuest = async (townieId) => {
@@ -104,9 +111,7 @@ export default function TownieDisplay({ user }) {
         }
     };
 
-    const handleIncrementQuest = async (quest, amountOverride) => {
-        const incrementAmount = amountOverride ?? Number.parseInt(incrementInputs[quest.id] ?? '1', 10);
-
+    const handleIncrementQuest = async (quest, incrementAmount) => {
         if (Number.isNaN(incrementAmount) || incrementAmount < 1) {
             setError('Increment amount must be at least 1.');
             return;
@@ -121,6 +126,59 @@ export default function TownieDisplay({ user }) {
         }
     };
 
+    const handleTogglePin = async (quest) => {
+        try {
+            const updatedQuest = await updateTrackedQuestPin(quest.id, !quest.is_pinned);
+            setError('');
+            upsertTrackedQuest(updatedQuest);
+        } catch (err) {
+            setError('Could not update that pin status.');
+        }
+    };
+
+    const handleStopTracking = async (quest) => {
+        try {
+            await deleteTrackedQuest(quest.id);
+            setError('');
+            removeTrackedQuest(quest);
+        } catch (err) {
+            setError('Could not stop tracking that completed quest.');
+        }
+    };
+
+    const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+
+    const visibleTownies = townies
+        .filter((townie) => {
+            if (!normalizedSearchTerm) {
+                return true;
+            }
+
+            const searchableText = [townie.name, townie.quest, townie.quest_type]
+                .filter(Boolean)
+                .join(' ')
+                .toLowerCase();
+
+            return searchableText.includes(normalizedSearchTerm);
+        })
+        .sort((leftTownie, rightTownie) => {
+            const leftPinned = trackedQuests[leftTownie.id]?.is_pinned ? 1 : 0;
+            const rightPinned = trackedQuests[rightTownie.id]?.is_pinned ? 1 : 0;
+
+            if (leftPinned !== rightPinned) {
+                return rightPinned - leftPinned;
+            }
+
+            const leftTracked = trackedQuests[leftTownie.id] ? 1 : 0;
+            const rightTracked = trackedQuests[rightTownie.id] ? 1 : 0;
+
+            if (leftTracked !== rightTracked) {
+                return rightTracked - leftTracked;
+            }
+
+            return leftTownie.name.localeCompare(rightTownie.name);
+        });
+
     if (!user) {
         return <p className="quest-empty-state">Log in to track your personal quest amounts.</p>;
     }
@@ -133,8 +191,19 @@ export default function TownieDisplay({ user }) {
         return (
             <section>
                 <p className="quest-error-banner">{error}</p>
+                <div className="quest-toolbar">
+                    <label className="quest-search-group">
+                        <span>Search townies</span>
+                        <input
+                            onChange={(event) => setSearchTerm(event.target.value)}
+                            placeholder="Name, quest, or type"
+                            type="search"
+                            value={searchTerm}
+                        />
+                    </label>
+                </div>
                 <div className="quest-grid">
-                    {townies.map((townie) => {
+                    {visibleTownies.map((townie) => {
                         const targetAmount = parseQuestAmount(townie.quest_amount);
                         const trackedQuest = trackedQuests[townie.id];
 
@@ -146,6 +215,16 @@ export default function TownieDisplay({ user }) {
                                 </div>
                                 <p className="quest-card-copy">{townie.quest}</p>
                                 <p className="quest-card-meta">Goal: {targetAmount || townie.quest_amount}</p>
+                                {trackedQuest && (
+                                    <button
+                                        aria-pressed={trackedQuest.is_pinned}
+                                        className="quest-pin-button"
+                                        onClick={() => handleTogglePin(trackedQuest)}
+                                        type="button"
+                                    >
+                                        {trackedQuest.is_pinned ? 'Unpin' : 'Pin to top'}
+                                    </button>
+                                )}
                                 {!trackedQuest && (
                                     <button
                                         className="quest-primary-button"
@@ -166,8 +245,20 @@ export default function TownieDisplay({ user }) {
 
     return (
         <section>
+            <div className="quest-toolbar">
+                <label className="quest-search-group">
+                    <span>Search townies</span>
+                    <input
+                        onChange={(event) => setSearchTerm(event.target.value)}
+                        placeholder="Name, quest, or type"
+                        type="search"
+                        value={searchTerm}
+                    />
+                </label>
+            </div>
+
             <div className="quest-grid">
-                {townies.map((townie) => {
+                {visibleTownies.map((townie) => {
                     const trackedQuest = trackedQuests[townie.id];
                     const targetAmount = trackedQuest?.target_amount ?? parseQuestAmount(townie.quest_amount);
                     const currentAmount = trackedQuest?.current_amount ?? 0;
@@ -200,6 +291,15 @@ export default function TownieDisplay({ user }) {
 
                             {trackedQuest && (
                                 <>
+                                    <button
+                                        aria-pressed={trackedQuest.is_pinned}
+                                        className="quest-pin-button"
+                                        onClick={() => handleTogglePin(trackedQuest)}
+                                        type="button"
+                                    >
+                                        {trackedQuest.is_pinned ? 'Unpin' : 'Pin to top'}
+                                    </button>
+
                                     <div className="quest-progress-row">
                                         <strong>{trackedQuest.current_amount} / {trackedQuest.target_amount}</strong>
                                         <span>{trackedQuest.is_complete ? 'Complete' : `${trackedQuest.remaining_amount} left`}</span>
@@ -243,29 +343,16 @@ export default function TownieDisplay({ user }) {
                                         ))}
                                     </div>
 
-                                    <form
-                                        className="quest-form-row"
-                                        onSubmit={(event) => {
-                                            event.preventDefault();
-                                            handleIncrementQuest(trackedQuest);
-                                        }}
-                                    >
-                                        <label className="quest-input-group">
-                                            <span>Add more</span>
-                                            <input
-                                                min="1"
-                                                onChange={(event) => setIncrementInputs((currentIncrementInputs) => ({
-                                                    ...currentIncrementInputs,
-                                                    [trackedQuest.id]: event.target.value,
-                                                }))}
-                                                type="number"
-                                                value={incrementInputs[trackedQuest.id] ?? '1'}
-                                            />
-                                        </label>
-                                        <button className="quest-secondary-button" type="submit">
-                                            Add
+                                    {trackedQuest.is_complete && (
+                                        <button
+                                            className="quest-secondary-button"
+                                            onClick={() => handleStopTracking(trackedQuest)}
+                                            type="button"
+                                        >
+                                            Stop Tracking
                                         </button>
-                                    </form>
+                                    )}
+
                                 </>
                             )}
                         </article>

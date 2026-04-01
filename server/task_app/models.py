@@ -14,6 +14,7 @@ class QuestProgress(models.Model):
         on_delete=models.CASCADE,
         related_name='user_progress',
     )
+    is_pinned = models.BooleanField(default=False)
     current_amount = models.PositiveIntegerField(default=0)
     completed_at = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

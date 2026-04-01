@@ -1,5 +1,6 @@
 import TownieDisplay from "../components/TownieDisplay"
 import { useOutletContext } from 'react-router-dom';
+import logo from '../assets/GoGoTownTracker.png';
 
 
 export default function Dashboard() {
@@ -8,11 +9,9 @@ export default function Dashboard() {
     return (
         <section className="quest-dashboard-shell">
             <header className="quest-dashboard-header">
-                <p className="quest-dashboard-kicker">Quest Tracker</p>
+                <img src={logo} alt="app logo" className='dashboard-logo' />
                 <h1>Townie Dashboard</h1>
-                <p>
-                    Track each townie quest separately and update your personal amount until the target is reached.
-                </p>
+                <h3 className="quest-dashboard-subheader">Quest Tracker</h3>
             </header>
             <TownieDisplay user={user} />
         </section>

@@ -23,6 +23,7 @@ class QuestProgressSerializer(serializers.ModelSerializer):
 			'quest',
 			'quest_amount',
 			'target_amount',
+			'is_pinned',
 			'current_amount',
 			'remaining_amount',
 			'is_complete',
@@ -73,7 +74,11 @@ class QuestProgressCreateSerializer(serializers.ModelSerializer):
 class QuestProgressAmountSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = QuestProgress
-		fields = ['current_amount']
+		fields = ['current_amount', 'is_pinned']
+		extra_kwargs = {
+			'current_amount': {'required': False},
+			'is_pinned': {'required': False},
+		}
 
 
 class QuestProgressIncrementSerializer(serializers.Serializer):
