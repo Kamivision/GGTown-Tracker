@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import logo from '../assets/GoGoTownTracker.png';
 
 const HomePage = () => {
-    const {setUser, create} = useOutletContext()
+    const {setUser} = useOutletContext()
     
 
     return (

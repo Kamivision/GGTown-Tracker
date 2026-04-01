@@ -24,13 +24,16 @@ const AuthForm = ({setUser}) => {
         setCreate(true)
         setEmail('')
         setPassword('')
-        navigate('/home')
+        navigate('/dashboard')
     }
 
     return (
         <>
             <Form onSubmit={handleSubmit} className="AuthForm">
-                <Form.Label><h2>{create ? "Create an Account" : "Log In"} to Save Your Progress!!</h2></Form.Label>
+                <Form.Label><h2>{create ? "Create an Account" : "Log In"} to View Your Dashboard!!</h2></Form.Label>
+                <Form.Text className="">
+                    WARNING: at this time the dashboard contains spoilers for hidden townies. Check back for updates to prevent this soon.   
+                </Form.Text>    
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label></Form.Label>
                     <Form.Control 
