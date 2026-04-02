@@ -7,6 +7,7 @@ import {
     incrementTrackedQuestAmount,
     updateTrackedQuestPin,
     updateTrackedQuestAmount,
+    createTownie,
 } from '../utilities';
 
 
@@ -22,6 +23,12 @@ export default function TownieDisplay({ user }) {
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [newTownieData, setNewTownieData] = useState({
+        name: '',
+        quest: '',
+        quest_amount: '',
+        quest_type: '',
+    });
 
     useEffect(() => {
         if (!user) {
@@ -142,7 +149,38 @@ export default function TownieDisplay({ user }) {
             setError('');
             removeTrackedQuest(quest);
         } catch (err) {
-            setError('Could not stop tracking that completed quest.');
+            setError('Could not stop tracking that townie quest.');
+        }
+    };
+
+    const handleCreateTownie = async (event) => {
+        event.preventDefault();
+
+        const { name, quest, quest_amount, quest_type } = newTownieData;
+
+        if (!name || !quest || !quest_amount || !quest_type) {
+            setError('All fields are required to create a new townie.');
+            return;
+        }
+
+        try {
+            const createdTownie = await createTownie(newTownieData);
+
+            if (!createdTownie) {
+                setError('Could not create that townie.');
+                return;
+            }
+
+            setTownies((currentTownies) => [...currentTownies, createdTownie]);
+            setNewTownieData({
+                name: '',
+                quest: '',
+                quest_amount: '',
+                quest_type: '',
+            });
+            setError('');
+        } catch (err) {
+            setError('Could not create that townie.');
         }
     };
 
@@ -180,11 +218,11 @@ export default function TownieDisplay({ user }) {
         });
 
     if (!user) {
-        return <p className="quest-empty-state">Log in to track your personal quest amounts.</p>;
+        return <p className="quest-empty-state">Log in to track your townie quests.</p>;
     }
 
     if (loading) {
-        return <p className="quest-empty-state">Loading your quest tracker...</p>;
+        return <p className="quest-empty-state">Loading your townie quest tracker...</p>;
     }
 
     if (error) {
@@ -213,7 +251,7 @@ export default function TownieDisplay({ user }) {
                                     <p className="quest-card-type">{townie.quest_type}</p>
                                     <h2>{townie.name}</h2>
                                 </div>
-                                <p className="quest-card-copy">{townie.quest}</p>
+                                
                                 <p className="quest-card-meta">Goal: {targetAmount || townie.quest_amount}</p>
                                 {trackedQuest && (
                                     <button
@@ -246,6 +284,60 @@ export default function TownieDisplay({ user }) {
     return (
         <section>
             <div className="quest-toolbar">
+                <form className="quest-form-row" onSubmit={handleCreateTownie}>
+                    <label className="quest-input-group">
+                        <span>Townie Name</span>
+                        <input
+                            type="text"
+                            value={newTownieData.name}
+                            onChange={(event) =>
+                                setNewTownieData((current) => ({ ...current, name: event.target.value }))
+                            }
+                            placeholder="ex: Nancy"
+                        />
+                    </label>
+
+                    <label className="quest-input-group">
+                        <span>Quest Type</span>
+                        <input
+                            type="text"
+                            value={newTownieData.quest_type}
+                            onChange={(event) =>
+                                setNewTownieData((current) => ({ ...current, quest_type: event.target.value }))
+                            }
+                            placeholder="ex: Gathering"
+                        />
+                    </label>
+
+                    <label className="quest-input-group">
+                        <span>Quest</span>
+                        <input
+                            type="text"
+                            value={newTownieData.quest}
+                            onChange={(event) =>
+                                setNewTownieData((current) => ({ ...current, quest: event.target.value }))
+                            }
+                            placeholder="ex: Chopped Wood"
+                        />
+                    </label>
+
+                    <label className="quest-input-group">
+                        <span>Goal Amount</span>
+                        <input
+                            type="number"
+                            min="1"
+                            value={newTownieData.quest_amount}
+                            onChange={(event) =>
+                                setNewTownieData((current) => ({ ...current, quest_amount: event.target.value }))
+                            }
+                        />
+                    </label>
+
+                    <button className="quest-primary-button" type="submit">
+                        Add Townie
+                    </button>
+                </form>
+
                 <label className="quest-search-group">
                     <span>Search townies</span>
                     <input
@@ -273,7 +365,6 @@ export default function TownieDisplay({ user }) {
                                 <h2>{townie.name}</h2>
                             </div>
 
-                            <p className="quest-card-copy">{townie.quest}</p>
                             <p className="quest-card-meta">
                                 Goal: {targetAmount > 0 ? `${targetAmount} ${townie.quest}` : townie.quest_amount}
                             </p>

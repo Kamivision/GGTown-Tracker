@@ -75,6 +75,19 @@ export const fetchATownie = async (name) => {
     }
 }
 
+export const createTownie = async (townieData) => {
+    try {
+        const response = await api.post(`townies/create/`, townieData);
+        if (response.status === 201) {
+            return response.data;
+        }
+        return null;
+    } catch (error) {
+        console.error('Error townie not created:', error);
+        return null;
+    }
+}
+
 export const fetchTrackedQuests = async () => {
     try {
         const response = await api.get('tasks/');
