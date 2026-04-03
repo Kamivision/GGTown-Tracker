@@ -15,6 +15,11 @@ body {
     linear-gradient(180deg, rgba(255, 248, 237, 1) 0%, rgba(241, 233, 216, 1) 100%);
 }
 
+.NavLink {
+  color: #0b60e0;
+  text-decoration: none;
+}
+
 .home-page-shell {
   display: flex;
   flex-direction: column;
@@ -60,8 +65,8 @@ body {
   justify-content: center;
   gap: 20px;
   margin-bottom: 20px;
-  background-color: #2563eb;
-  text-decoration-color: chocolate;
+  background-color: #490064;
+  border-radius: 12px;
 }
 
 .quest-dashboard-shell {

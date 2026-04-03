@@ -1,9 +1,16 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
 import logo from '../assets/GoGoTownTracker.png';
 
 export default function HomePage() {
-  const { setUser } = useOutletContext()
+  const { user, setUser } = useOutletContext();
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    handleLogout();
+    setUser(null);
+    navigate('/');
+  };
 
   return (
     <div className="home-page-shell">
@@ -18,7 +25,16 @@ export default function HomePage() {
       </section>
 
       <section className="UserForm rounded-2xl border border-amber-200/70 bg-white/70 p-6 shadow-lg shadow-amber-900/10">
-        <AuthForm setUser={setUser} />
+        <div>
+          {!user ? (
+            <AuthForm setUser={setUser} />
+          ) : (
+            <div>
+              <h2>You are logged in as {user}</h2>
+              <button onClick={onLogout}>Log Out</button>
+            </div>
+          )}
+        </div>
       </section>
     </div>
   )

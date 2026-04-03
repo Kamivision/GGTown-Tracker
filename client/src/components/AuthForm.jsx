@@ -9,17 +9,28 @@ export default function AuthForm ({ setUser }) {
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    let userDict = {
-      email: email,
-      password: password
+    e.preventDefault();
+
+    const userDict = {
+      email,
+      password
     }
-    let user = await handleUserAuth(userDict, create)
-    setUser(user)
-    setCreate(true)
-    setEmail('')
-    setPassword('')
-    navigate('/dashboard')
+    try {
+      const user = await handleUserAuth(userDict, create);
+      setUser(user);
+
+      if (user) {
+        setCreate(true);
+        setEmail('');
+        setPassword('');
+        navigate('/dashboard');
+      } else {
+        alert('Login/signup failed. Please try again.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Authentication failed. Check your credentials and try again.');
+    }
   }
 
   return (
