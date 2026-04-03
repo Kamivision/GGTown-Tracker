@@ -16,7 +16,7 @@ const parseQuestAmount = (questAmount) => {
     return Number.isInteger(parsedAmount) && parsedAmount > 0 ? parsedAmount : 0;
 };
 
-export default function TownieDisplay({ user }) {
+export default function TownieDisplay({ user, mode }) {
     const [townies, setTownies] = useState([]);
     const [trackedQuests, setTrackedQuests] = useState({});
     const [amountInputs, setAmountInputs] = useState({});
@@ -199,14 +199,15 @@ export default function TownieDisplay({ user }) {
 
             return searchableText.includes(normalizedSearchTerm);
         })
-        .sort((leftTownie, rightTownie) => {
-            const leftPinned = trackedQuests[leftTownie.id]?.is_pinned ? 1 : 0;
-            const rightPinned = trackedQuests[rightTownie.id]?.is_pinned ? 1 : 0;
-
-            if (leftPinned !== rightPinned) {
-                return rightPinned - leftPinned;
+        .filter((townie) => {
+            if (mode !== 'townies') {
+                return true;
             }
 
+            const trackedQuest = trackedQuests[townie.id];
+            return Boolean(trackedQuest?.is_pinned);
+        })
+        .sort((leftTownie, rightTownie) => {
             const leftTracked = trackedQuests[leftTownie.id] ? 1 : 0;
             const rightTracked = trackedQuests[rightTownie.id] ? 1 : 0;
 
@@ -253,14 +254,14 @@ export default function TownieDisplay({ user }) {
                                 </div>
                                 
                                 <p className="quest-card-meta">Goal: {targetAmount || townie.quest_amount}</p>
-                                {trackedQuest && (
+                                {(mode === 'townies' || trackedQuest.is_complete) && (
                                     <button
                                         aria-pressed={trackedQuest.is_pinned}
                                         className="quest-pin-button"
                                         onClick={() => handleTogglePin(trackedQuest)}
                                         type="button"
                                     >
-                                        {trackedQuest.is_pinned ? 'Unpin' : 'Pin to top'}
+                                        {trackedQuest.is_pinned ? 'Unpin from YourTownies' : 'Pin to Your Townies'}
                                     </button>
                                 )}
                                 {!trackedQuest && (
@@ -388,7 +389,7 @@ export default function TownieDisplay({ user }) {
                                         onClick={() => handleTogglePin(trackedQuest)}
                                         type="button"
                                     >
-                                        {trackedQuest.is_pinned ? 'Unpin' : 'Pin to top'}
+                                        {trackedQuest.is_pinned ? 'Unpin from YourTownies' : 'Pin to Your Townies'}
                                     </button>
 
                                     <div className="quest-progress-row">

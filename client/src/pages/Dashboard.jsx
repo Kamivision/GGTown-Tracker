@@ -13,7 +13,7 @@ export default function Dashboard() {
                 <h1>Townie Dashboard</h1>
                 <h3 className="quest-dashboard-subheader">Quest Tracker</h3>
             </header>
-            <TownieDisplay user={user} />
+            <TownieDisplay user={user} mode="dashboard" />
         </section>
     )
 }
