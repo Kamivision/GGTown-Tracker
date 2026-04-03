@@ -16,7 +16,7 @@ const parseQuestAmount = (questAmount) => {
     return Number.isInteger(parsedAmount) && parsedAmount > 0 ? parsedAmount : 0;
 };
 
-export default function TownieDisplay({ user, mode }) {
+export default function TownieDisplay({ user, mode = 'dashboard' }) {
     const [townies, setTownies] = useState([]);
     const [trackedQuests, setTrackedQuests] = useState({});
     const [amountInputs, setAmountInputs] = useState({});
@@ -29,6 +29,7 @@ export default function TownieDisplay({ user, mode }) {
         quest_amount: '',
         quest_type: '',
     });
+    const showToolbar = mode === 'dashboard';
 
     useEffect(() => {
         if (!user) {
@@ -230,17 +231,19 @@ export default function TownieDisplay({ user, mode }) {
         return (
             <section>
                 <p className="quest-error-banner">{error}</p>
-                <div className="quest-toolbar">
-                    <label className="quest-search-group">
-                        <span>Search townies</span>
-                        <input
-                            onChange={(event) => setSearchTerm(event.target.value)}
-                            placeholder="Name, quest, or type"
-                            type="search"
-                            value={searchTerm}
-                        />
-                    </label>
-                </div>
+                {showToolbar && (
+                    <div className="quest-toolbar">
+                        <label className="quest-search-group">
+                            <span>Search townies</span>
+                            <input
+                                onChange={(event) => setSearchTerm(event.target.value)}
+                                placeholder="Name, quest, or type"
+                                type="search"
+                                value={searchTerm}
+                            />
+                        </label>
+                    </div>
+                )}
                 <div className="quest-grid">
                     {visibleTownies.map((townie) => {
                         const targetAmount = parseQuestAmount(townie.quest_amount);
@@ -284,71 +287,73 @@ export default function TownieDisplay({ user, mode }) {
 
     return (
         <section>
-            <div className="quest-toolbar">
-                <form className="quest-form-row" onSubmit={handleCreateTownie}>
-                    <label className="quest-input-group">
-                        <span>Townie Name</span>
+            {showToolbar && (
+                <div className="quest-toolbar">
+                    <form className="quest-form-row" onSubmit={handleCreateTownie}>
+                        <label className="quest-input-group">
+                            <span>Townie Name</span>
+                            <input
+                                type="text"
+                                value={newTownieData.name}
+                                onChange={(event) =>
+                                    setNewTownieData((current) => ({ ...current, name: event.target.value }))
+                                }
+                                placeholder="ex: Nancy"
+                            />
+                        </label>
+
+                        <label className="quest-input-group">
+                            <span>Quest Type</span>
+                            <input
+                                type="text"
+                                value={newTownieData.quest_type}
+                                onChange={(event) =>
+                                    setNewTownieData((current) => ({ ...current, quest_type: event.target.value }))
+                                }
+                                placeholder="ex: Gathering"
+                            />
+                        </label>
+
+                        <label className="quest-input-group">
+                            <span>Quest</span>
+                            <input
+                                type="text"
+                                value={newTownieData.quest}
+                                onChange={(event) =>
+                                    setNewTownieData((current) => ({ ...current, quest: event.target.value }))
+                                }
+                                placeholder="ex: Chopped Wood"
+                            />
+                        </label>
+
+                        <label className="quest-input-group">
+                            <span>Goal Amount</span>
+                            <input
+                                type="number"
+                                min="1"
+                                value={newTownieData.quest_amount}
+                                onChange={(event) =>
+                                    setNewTownieData((current) => ({ ...current, quest_amount: event.target.value }))
+                                }
+                            />
+                        </label>
+
+                        <button className="quest-primary-button" type="submit">
+                            Add Townie
+                        </button>
+                    </form>
+
+                    <label className="quest-search-group">
+                        <span>Search townies</span>
                         <input
-                            type="text"
-                            value={newTownieData.name}
-                            onChange={(event) =>
-                                setNewTownieData((current) => ({ ...current, name: event.target.value }))
-                            }
-                            placeholder="ex: Nancy"
+                            onChange={(event) => setSearchTerm(event.target.value)}
+                            placeholder="Name, quest, or type"
+                            type="search"
+                            value={searchTerm}
                         />
                     </label>
-
-                    <label className="quest-input-group">
-                        <span>Quest Type</span>
-                        <input
-                            type="text"
-                            value={newTownieData.quest_type}
-                            onChange={(event) =>
-                                setNewTownieData((current) => ({ ...current, quest_type: event.target.value }))
-                            }
-                            placeholder="ex: Gathering"
-                        />
-                    </label>
-
-                    <label className="quest-input-group">
-                        <span>Quest</span>
-                        <input
-                            type="text"
-                            value={newTownieData.quest}
-                            onChange={(event) =>
-                                setNewTownieData((current) => ({ ...current, quest: event.target.value }))
-                            }
-                            placeholder="ex: Chopped Wood"
-                        />
-                    </label>
-
-                    <label className="quest-input-group">
-                        <span>Goal Amount</span>
-                        <input
-                            type="number"
-                            min="1"
-                            value={newTownieData.quest_amount}
-                            onChange={(event) =>
-                                setNewTownieData((current) => ({ ...current, quest_amount: event.target.value }))
-                            }
-                        />
-                    </label>
-
-                    <button className="quest-primary-button" type="submit">
-                        Add Townie
-                    </button>
-                </form>
-
-                <label className="quest-search-group">
-                    <span>Search townies</span>
-                    <input
-                        onChange={(event) => setSearchTerm(event.target.value)}
-                        placeholder="Name, quest, or type"
-                        type="search"
-                        value={searchTerm}
-                    />
-                </label>
-            </div>
+                </div>
+            )}
 
             <div className="quest-grid">
                 {visibleTownies.map((townie) => {
