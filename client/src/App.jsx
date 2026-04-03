@@ -1,7 +1,6 @@
 import { api } from './utilities'
 import { useEffect, useState } from 'react'
 import { Outlet, useLoaderData } from 'react-router-dom'
-import './App.css'
 import NavBar from './components/NavBar'
 
 function App() {

@@ -5,7 +5,7 @@ body {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
+  border-inline: 1px solid #e5e7eb;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,9 @@ body {
 
 .home-page-shell {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 16px;
 }
 
 .UserForm {
@@ -32,7 +34,7 @@ body {
 .UserForm .switch {
   display: flex;
   justify-content: center;
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
 .logo {
@@ -58,7 +60,7 @@ body {
   justify-content: center;
   gap: 20px;
   margin-bottom: 20px;
-  background-color: blue;
+  background-color: #2563eb;
   text-decoration-color: chocolate;
 }
 
@@ -96,7 +98,6 @@ body {
   gap: 6px;
   width: min(560px, 100%);
   text-align: center;
-  
 }
 
 .quest-search-group input {
@@ -245,6 +246,15 @@ body {
 .quest-error-banner {
   margin-bottom: 18px;
   color: #a12d1e;
+}
+
+@media (min-width: 768px) {
+  .home-page-shell {
+    flex-direction: row;
+    align-items: flex-start;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 @media (max-width: 720px) {

@@ -1,26 +1,29 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+
+const navLinkClass = ({ isActive }) =>
+  `px-3 py-2 rounded-full text-sm font-semibold transition ${
+    isActive
+      ? 'bg-white/25 text-white'
+      : 'text-white/90 hover:bg-white/20 hover:text-white'
+  }`;
 
 export default function NavBar() {
-    return (
-        <>
-            <Navbar expand="lg" bg="primary" data-bs-theme="dark" id='navbar'>
-                <Container>
-                    <Navbar.Brand as={Link} to="/">Go Go Town Tracker</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto justify-content-end" style={{ width: "100%" }}>
-                        <Nav.Link as={Link} to="/home">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/townies">Townies</Nav.Link>
-                        <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
-                    </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-        </>
-        
-        
-    )
+  return (
+    <nav id="navbar">
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
+        <Link
+          to="/"
+          className="text-base font-bold tracking-wide text-white no-underline"
+        >
+          Go Go Town Tracker
+        </Link>
+
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <NavLink to="/home" className={navLinkClass}>Home</NavLink>
+          <NavLink to="/townies" className={navLinkClass}>Townies</NavLink>
+          <NavLink to="/dashboard" className={navLinkClass}>Dashboard</NavLink>
+        </div>
+      </div>
+    </nav>
+  );
 }

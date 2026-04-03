@@ -1,30 +1,26 @@
 import { useOutletContext } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
-import Card from 'react-bootstrap/Card';
 import logo from '../assets/GoGoTownTracker.png';
 
-const HomePage = () => {
-    const {setUser} = useOutletContext()
-    
+export default function HomePage() {
+  const { setUser } = useOutletContext()
 
-    return (
-        <>
-            <div className="home-page-shell">
-                <Card className="Home">
-                    <Card.Body>
-                        <Card.Img variant="top" src={logo} alt="app logo" className='logo' />
-                        <Card.Title>Welcome to the Go-Go Town Tracker App!</Card.Title>
-                        <p className="home-page-instructions">Track your townies and quests with ease. <br></br> Please log in or create an account to get started!</p>
-                    </Card.Body>
-                </Card>
-                <Card className="UserForm">
-                    <Card.Body>
-                        <AuthForm setUser={setUser} />
-                    </Card.Body>
-                </Card>
-            </div>
-        </>
-    )
+  return (
+    <div className="home-page-shell">
+      <section className="Home rounded-2xl border border-amber-200/70 bg-white/70 p-6 shadow-lg shadow-amber-900/10">
+        <img src={logo} alt="app logo" className="logo mx-auto" />
+        <h2 className="mb-3 text-2xl font-semibold">Welcome to the Go-Go Town Tracker App!</h2>
+        <p className="home-page-instructions">
+          Track your townies and quests with ease.
+          <br />
+          Please log in or create an account to get started!
+        </p>
+      </section>
+
+      <section className="UserForm rounded-2xl border border-amber-200/70 bg-white/70 p-6 shadow-lg shadow-amber-900/10">
+        <AuthForm setUser={setUser} />
+      </section>
+    </div>
+  )
 }
 
-export default HomePage
