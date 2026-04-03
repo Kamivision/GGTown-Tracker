@@ -54,3 +54,5 @@ class LogOut(UserView):
         user = request.user
         user.auth_token.delete()
         return Response(f"{user.email} has been logged out")
+    
+

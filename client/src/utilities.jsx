@@ -133,3 +133,16 @@ export const incrementTrackedQuestAmount = async (questProgressId, amount) => {
     });
     return response.data;
 }
+
+export const chatWithGemini = async (message, history = []) => {
+    try {
+        const response = await api.post('dashboard/chat/', { message, history });
+        if (response.status === 200) {
+            return response.data.reply;
+        }
+        return 'Sorry, I could not get a response right now.';
+    } catch (error) {
+        console.error('Error chatting with Gemini:', error);
+        return error?.response?.data?.detail || 'Sorry, I could not get a response right now.';
+    }
+}

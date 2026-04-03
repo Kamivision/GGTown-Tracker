@@ -14,6 +14,8 @@ services:
   backend:
     build: ./server
     container_name: ggtownserver-container
+    env_file:
+      - .env
     command: sh -c "python manage.py migrate && gunicorn town_proj.wsgi --bind 0.0.0:8000 --reload"
     ports:
       - "8000:8000"
