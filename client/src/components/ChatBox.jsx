@@ -50,7 +50,7 @@ export default function ChatBox() {
     return (
         <>
             <button
-                className="fixed bottom-4 right-4 z-50 inline-flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-black p-0 text-sm font-medium text-white shadow-lg hover:bg-gray-700"
+                className="gemini fixed bottom-4 right-4 z-50 inline-flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-black p-0 text-sm font-medium text-white shadow-lg hover:bg-gray-700"
                 type="button"
                 onClick={() => setIsOpen((currentValue) => !currentValue)}
                 aria-haspopup="dialog"
@@ -63,7 +63,7 @@ export default function ChatBox() {
 
             {isOpen && (
                 <div
-                    className="fixed bottom-[calc(4rem+1.5rem)] right-0 z-50 mr-4 h-[634px] w-[440px] rounded-lg border border-[#e5e7eb] bg-white p-6 shadow-lg"
+                    className="fixed bottom-24 right-4 z-50 h-[634px] w-[440px] rounded-lg border border-[#e5e7eb] bg-white p-6 shadow-lg"
                     style={{ boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)' }}
                 >
                     <div className="flex flex-col space-y-1.5 pb-6">
@@ -87,7 +87,7 @@ export default function ChatBox() {
                                         </div>
                                     </span>
 
-                                    <p className="leading-relaxed">
+                                    <p className="min-w-0 flex-1 whitespace-pre-wrap break-words leading-relaxed">
                                         <span className="block font-bold text-gray-700">
                                             {isAssistant ? 'Gem' : 'You'}
                                         </span>
@@ -105,7 +105,7 @@ export default function ChatBox() {
                                         Gem
                                     </div>
                                 </span>
-                                <p className="leading-relaxed">
+                                <p className="min-w-0 flex-1 whitespace-pre-wrap break-words leading-relaxed">
                                     <span className="block font-bold text-gray-700">Gem</span>
                                     Thinking...
                                 </p>

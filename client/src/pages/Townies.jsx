@@ -25,12 +25,12 @@ export default function Townies() {
 
     return (
         <>
-            <section className="UserHome mx-auto mt-8 w-full max-w-3xl rounded-2xl border border-amber-200/70 bg-white/70 p-6 shadow-lg shadow-amber-900/10">
+            <section className="Townies-header">
                 <img src={logo} alt="app logo" className="logo mx-auto" />
                 <h2 className="text-2xl font-semibold">
                     Welcome {user}!
                 </h2>
-                <h4 className='townie description p-4'>Here you can manage and track your townie quests. To add more townies to this list go to the dashboard and search for new townies or create your own.</h4>
+                <h4 className='townies-subheader'>Here you can manage and track your townie quests. To add more townies to this list go to the dashboard and search for new townies or create your own.</h4>
             </section>
             <h1 className='p-6'>Your Townies:</h1>
 

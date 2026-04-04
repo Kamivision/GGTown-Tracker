@@ -60,9 +60,16 @@ export default function TownieDisplay({
         <section className="pb-6">
             {error && <p className="quest-error-banner">{error}</p>}
 
-            <div className="quest-toolbar">
-                <form className="quest-form-row" onSubmit={handleSubmit}>
-                        <label className="quest-input-group">
+            <div className="mx-auto mb-6 grid w-full max-w-6xl gap-4 lg:grid-cols-[minmax(0,1.7fr)_minmax(280px,0.9fr)]">
+                <section className="quest-card w-full max-w-none text-left">
+                    <div className="mb-5">
+                        <p className="quest-card-type">Add A Townie</p>
+                        <h2 className="m-0 text-2xl font-semibold">Create Your Own Townie!</h2>
+                        <p className="quest-card-meta mt-2 mb-0">Add townie details below and save them to your dashboard.</p>
+                    </div>
+
+                    <form className="grid gap-4 md:grid-cols-2" onSubmit={handleSubmit}>
+                        <label className="quest-input-group text-left">
                             <span>Townie Name</span>
                             <input
                                 type="text"
@@ -74,7 +81,7 @@ export default function TownieDisplay({
                             />
                         </label>
 
-                        <label className="quest-input-group">
+                        <label className="quest-input-group text-left">
                             <span>Quest Type</span>
                             <input
                                 type="text"
@@ -86,7 +93,7 @@ export default function TownieDisplay({
                             />
                         </label>
 
-                        <label className="quest-input-group">
+                        <label className="quest-input-group text-left md:col-span-2 xl:col-span-1">
                             <span>Quest</span>
                             <input
                                 type="text"
@@ -98,7 +105,7 @@ export default function TownieDisplay({
                             />
                         </label>
 
-                        <label className="quest-input-group">
+                        <label className="quest-input-group text-left">
                             <span>Goal Amount</span>
                             <input
                                 type="number"
@@ -110,30 +117,40 @@ export default function TownieDisplay({
                             />
                         </label>
 
-                        <button className="quest-primary-button" type="submit">
-                            Add Townie
-                        </button>
-                </form>
+                        <div className="md:col-span-2 flex justify-end pt-2">
+                            <button className="quest-primary-button min-w-36" type="submit">
+                                Add Townie
+                            </button>
+                        </div>
+                    </form>
+                </section>
 
-                <label className="quest-search-group">
-                    <span>Search townies</span>
-                    <input
-                        onChange={(event) => setSearchTerm(event.target.value)}
-                        placeholder="Name, quest, or type"
-                        type="search"
-                        value={searchTerm}
-                    />
-                </label>
+                <section className="quest-card w-full max-w-none text-left">
+                    <div className="mb-4">
+                            <p className="quest-card-type">Search</p>
+                            <h2 className="m-0 text-2xl font-semibold">Find Existing Townies</h2>
+                    </div>
+
+                    <label className="quest-search-group w-full text-left">
+                        <span>Search Townies</span>
+                        <input
+                            onChange={(event) => setSearchTerm(event.target.value)}
+                            placeholder="Name, quest, or type"
+                            type="search"
+                            value={searchTerm}
+                        />
+                    </label>
+                </section>
             </div>
 
-            <div className="quest-grid">
+            <div className="quest-grid justify-center">
                 {visibleTownies.map((townie) => {
                     const trackedQuest = trackedQuestsByTownie[townie.id];
                     const isPinned = Boolean(pinnedTowniesByTownie[townie.id]);
                     const targetAmount = parseQuestAmount(townie.quest_amount);
 
                     return (
-                        <article className="quest-card" key={townie.id}>
+                        <article className="quest-card h-full w-full max-w-[320px] justify-self-center" key={townie.id}>
                             <div className="quest-card-header">
                                 <p className="quest-card-type">{townie.quest_type}</p>
                                 <h2>{townie.name}</h2>

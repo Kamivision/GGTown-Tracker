@@ -117,7 +117,7 @@ export default function TownieManager({
                 <p className="quest-empty-state">Pin a townie or start tracking one from the dashboard to manage it here.</p>
             )}
 
-            <div className="quest-grid">
+            <div className="quest-grid justify-center">
                 {visibleTownies.map(({ townie, trackedQuest, isPinned }) => {
                     const targetAmount = trackedQuest?.target_amount ?? parseQuestAmount(townie.quest_amount);
                     const currentAmount = trackedQuest?.current_amount ?? 0;
@@ -126,7 +126,7 @@ export default function TownieManager({
                         : 0;
 
                     return (
-                        <article className="quest-card" key={townie.id}>
+                        <article className="quest-card h-full w-full max-w-[320px] justify-self-center" key={townie.id}>
                             <div className="quest-card-header">
                                 <p className="quest-card-type">{townie.quest_type}</p>
                                 <h2>{townie.name}</h2>

@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 
 const navLinkClass = ({ isActive }) =>
-  `px-3 py-2 rounded-full text-sm font-semibold transition ${
+  `px-3 py-2 rounded-full text-sm font-semibold transition no-underline ${
     isActive
       ? 'bg-white/25 text-white'
       : 'text-white/90 hover:bg-white/20 hover:text-white'

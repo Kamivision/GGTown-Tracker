@@ -32,7 +32,7 @@ export default function Dashboard() {
             <header className="quest-dashboard-header">
                 <img src={logo} alt="app logo" className='dashboard-logo' />
                 <h1>Townie Dashboard</h1>
-                <h3 className="quest-dashboard-subheader">Quest Tracker</h3>
+                <h3 className="quest-dashboard-subheader">Scroll through, Search For, or Create a Townie</h3>
             </header>
             <ChatBox />
 
