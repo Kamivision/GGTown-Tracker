@@ -264,7 +264,7 @@ export default function TownieDisplay({ user, mode = 'dashboard' }) {
                                         onClick={() => handleTogglePin(trackedQuest)}
                                         type="button"
                                     >
-                                        {trackedQuest.is_pinned ? 'Unpin from YourTownies' : 'Pin to Your Townies'}
+                                        {trackedQuest.is_pinned ? 'Unpin from Your Townies' : 'Pin to Your Townies'}
                                     </button>
                                 )}
                                 {!trackedQuest && (
@@ -286,7 +286,7 @@ export default function TownieDisplay({ user, mode = 'dashboard' }) {
     }
 
     return (
-        <section>
+        <section className='pb-6'>
             {showToolbar && (
                 <div className="quest-toolbar">
                     <form className="quest-form-row" onSubmit={handleCreateTownie}>
@@ -394,7 +394,7 @@ export default function TownieDisplay({ user, mode = 'dashboard' }) {
                                         onClick={() => handleTogglePin(trackedQuest)}
                                         type="button"
                                     >
-                                        {trackedQuest.is_pinned ? 'Unpin from YourTownies' : 'Pin to Your Townies'}
+                                        {trackedQuest.is_pinned ? 'Unpin from Your Townies' : 'Pin to Your Townies'}
                                     </button>
 
                                     <div className="quest-progress-row">

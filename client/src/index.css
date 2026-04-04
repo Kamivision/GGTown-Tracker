@@ -55,11 +55,6 @@ body {
   justify-self: center;
 }
 
-#towniesTable {
-  width: 100%;
-  border-collapse: collapse;
-}
-
 #navbar {
   display: flex;
   justify-content: center;
@@ -67,6 +62,13 @@ body {
   margin-bottom: 20px;
   background-color: #490064;
   border-radius: 12px;
+}
+
+.townie.description {
+  color: #490064;
+  font-size: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .quest-dashboard-shell {
@@ -273,3 +275,4 @@ body {
     align-items: flex-start;
   }
 }
+

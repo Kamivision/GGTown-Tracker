@@ -67,8 +67,8 @@ export default function ChatBox() {
                     style={{ boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)' }}
                 >
                     <div className="flex flex-col space-y-1.5 pb-6">
-                        <h2 className="text-lg font-semibold tracking-tight">Chatbot</h2>
-                        <p className="text-sm leading-3 text-[#6b7280]">Powered by Gemini</p>
+                        <h2 className="text-lg font-semibold tracking-tight">Go-Go Gem</h2>
+                        <p className="text-xs leading-3 text-[#6b7280]">Powered by Google Gemini</p>
                     </div>
 
                     <div
@@ -83,13 +83,13 @@ export default function ChatBox() {
                                     <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-full">
                                         <div className="flex h-8 w-8 items-center justify-center rounded-full border bg-gray-100 text-xs font-semibold">
                                             {/* Replace this label with an image or icon later if needed. */}
-                                            {isAssistant ? 'AI' : 'You'}
+                                            {isAssistant ? 'Gem' : 'You'}
                                         </div>
                                     </span>
 
                                     <p className="leading-relaxed">
                                         <span className="block font-bold text-gray-700">
-                                            {isAssistant ? 'AI' : 'You'}
+                                            {isAssistant ? 'Gem' : 'You'}
                                         </span>
                                         {message.content}
                                     </p>
@@ -102,11 +102,11 @@ export default function ChatBox() {
                                 <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-full">
                                     <div className="flex h-8 w-8 items-center justify-center rounded-full border bg-gray-100 text-xs font-semibold">
                                         {/* Replace this label with an image or icon later if needed. */}
-                                        AI
+                                        Gem
                                     </div>
                                 </span>
                                 <p className="leading-relaxed">
-                                    <span className="block font-bold text-gray-700">AI</span>
+                                    <span className="block font-bold text-gray-700">Gem</span>
                                     Thinking...
                                 </p>
                             </div>
@@ -114,7 +114,7 @@ export default function ChatBox() {
                     </div>
 
                     <div className="flex items-center pt-0">
-                        <form onSubmit={handleSubmit} className="flex w-full items-center justify-center space-x-2">
+                        <form onSubmit={handleSubmit} className="flex w-full items-center justify-center space-x-2 ">
                             <input
                                 className="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm text-[#030712] placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                 placeholder="Type your message"

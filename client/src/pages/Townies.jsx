@@ -13,9 +13,10 @@ export default function Townies() {
                 <h2 className="text-2xl font-semibold">
                     Welcome {user}!
                 </h2>
+                <h4 className='townie description p-4'>Here you can manage and track your townie quests. To add more townies to this list go to the dashboard and search for new townies or create your own.</h4>
             </section>
-            <h1>Your Townies:</h1>
-            <h3>Here you can manage and track your townie quests. To add more townies to this list go to the dashboard and search for new townies or create your own.</h3>
+            <h1 className='p-6'>Your Townies:</h1>
+            
             <TownieDisplay user={user} mode="townies" />
         </> 
     )
