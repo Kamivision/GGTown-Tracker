@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from townie_app.models import Townie
-from .models import QuestProgress
+from .models import QuestProgress, TowniePin
 
 
 class QuestProgressSerializer(serializers.ModelSerializer):
@@ -83,3 +83,44 @@ class QuestProgressAmountSerializer(serializers.ModelSerializer):
 
 class QuestProgressIncrementSerializer(serializers.Serializer):
 	amount = serializers.IntegerField(min_value=1)
+
+
+class TowniePinSerializer(serializers.ModelSerializer):
+	townie_id = serializers.IntegerField(source='townie.id', read_only=True)
+	townie_name = serializers.CharField(source='townie.name', read_only=True)
+	quest_type = serializers.CharField(source='townie.quest_type', read_only=True)
+	quest = serializers.CharField(source='townie.quest', read_only=True)
+	quest_amount = serializers.CharField(source='townie.quest_amount', read_only=True)
+
+	class Meta:
+		model = TowniePin
+		fields = [
+			'id',
+			'townie_id',
+			'townie_name',
+			'quest_type',
+			'quest',
+			'quest_amount',
+			'created_at',
+		]
+		read_only_fields = fields
+
+
+class TowniePinCreateSerializer(serializers.ModelSerializer):
+	townie_id = serializers.PrimaryKeyRelatedField(
+		queryset=Townie.objects.all(),
+		source='townie',
+	)
+
+	class Meta:
+		model = TowniePin
+		fields = ['townie_id']
+
+	def create(self, validated_data):
+		user = self.context['request'].user
+		townie_pin, created = TowniePin.objects.get_or_create(
+			user=user,
+			townie=validated_data['townie'],
+		)
+		self.was_created = created
+		return townie_pin

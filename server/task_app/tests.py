@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
 
-from task_app.models import QuestProgress
+from task_app.models import QuestProgress, TowniePin
 from townie_app.models import Townie
 from user_app.models import AppUser
 
@@ -88,3 +88,29 @@ class QuestProgressApiTests(APITestCase):
 
 		self.assertEqual(unpin_response.status_code, status.HTTP_200_OK)
 		self.assertFalse(unpin_response.data['is_pinned'])
+
+	def test_user_can_pin_townie_without_tracking_it(self):
+		response = self.client.post('/api/v1/tasks/pins/', {'townie_id': self.townie.id}, format='json')
+
+		self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+		self.assertEqual(response.data['townie_id'], self.townie.id)
+		self.assertTrue(TowniePin.objects.filter(user=self.user, townie=self.townie).exists())
+		self.assertFalse(QuestProgress.objects.filter(user=self.user, townie=self.townie).exists())
+
+	def test_users_only_see_their_own_pinned_townies(self):
+		TowniePin.objects.create(user=self.user, townie=self.townie)
+		TowniePin.objects.create(user=self.other_user, townie=self.townie)
+
+		response = self.client.get('/api/v1/tasks/pins/')
+
+		self.assertEqual(response.status_code, status.HTTP_200_OK)
+		self.assertEqual(len(response.data), 1)
+		self.assertEqual(response.data[0]['townie_id'], self.townie.id)
+
+	def test_user_can_unpin_saved_townie(self):
+		townie_pin = TowniePin.objects.create(user=self.user, townie=self.townie)
+
+		response = self.client.delete(f'/api/v1/tasks/pins/{townie_pin.id}/')
+
+		self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+		self.assertFalse(TowniePin.objects.filter(id=townie_pin.id).exists())

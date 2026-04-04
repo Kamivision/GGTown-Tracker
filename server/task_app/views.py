@@ -10,6 +10,8 @@ from .serializers import (
 	QuestProgressCreateSerializer,
 	QuestProgressIncrementSerializer,
 	QuestProgressSerializer,
+	TowniePinCreateSerializer,
+	TowniePinSerializer,
 )
 
 
@@ -57,3 +59,24 @@ class QuestProgressIncrementView(UserView):
 		quest_progress.current_amount += serializer.validated_data['amount']
 		quest_progress.save()
 		return Response(QuestProgressSerializer(quest_progress).data, status=s.HTTP_200_OK)
+
+
+class TowniePinListCreate(UserView):
+	def get(self, request):
+		townie_pins = request.user.townie_pins.select_related('townie')
+		return Response(TowniePinSerializer(townie_pins, many=True).data, status=s.HTTP_200_OK)
+
+	def post(self, request):
+		serializer = TowniePinCreateSerializer(data=request.data, context={'request': request})
+		serializer.is_valid(raise_exception=True)
+		townie_pin = serializer.save()
+		output = TowniePinSerializer(townie_pin)
+		status_code = s.HTTP_201_CREATED if getattr(serializer, 'was_created', False) else s.HTTP_200_OK
+		return Response(output.data, status=status_code)
+
+
+class TowniePinDelete(UserView):
+	def delete(self, request, townie_pin_id):
+		townie_pin = get_object_or_404(request.user.townie_pins, id=townie_pin_id)
+		townie_pin.delete()
+		return Response(status=s.HTTP_204_NO_CONTENT)

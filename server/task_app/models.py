@@ -66,3 +66,29 @@ class QuestProgress(models.Model):
             self.completed_at = None
 
         super().save(*args, **kwargs)
+
+
+class TowniePin(models.Model):
+    user = models.ForeignKey(
+        'user_app.AppUser',
+        on_delete=models.CASCADE,
+        related_name='townie_pins',
+    )
+    townie = models.ForeignKey(
+        'townie_app.Townie',
+        on_delete=models.CASCADE,
+        related_name='pinned_by_users',
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'townie'],
+                name='unique_user_townie_pin',
+            )
+        ]
+        ordering = ['townie__name']
+
+    def __str__(self):
+        return f'{self.user.email} pinned {self.townie.name}'
