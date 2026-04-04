@@ -101,10 +101,30 @@ export const fetchTrackedQuests = async () => {
     }
 }
 
+export const fetchTowniePins = async () => {
+    try {
+        const response = await api.get('tasks/pins/');
+        if (response.status === 200) {
+            return response.data;
+        }
+        return [];
+    } catch (error) {
+        console.error('Error fetching townie pins:', error);
+        return [];
+    }
+}
+
 export const createTrackedQuest = async (townieId, currentAmount = 0) => {
     const response = await api.post('tasks/', {
         townie_id: townieId,
         current_amount: currentAmount,
+    });
+    return response.data;
+}
+
+export const createTowniePin = async (townieId) => {
+    const response = await api.post('tasks/pins/', {
+        townie_id: townieId,
     });
     return response.data;
 }
@@ -125,6 +145,10 @@ export const updateTrackedQuestPin = async (questProgressId, isPinned) => {
 
 export const deleteTrackedQuest = async (questProgressId) => {
     await api.delete(`tasks/${questProgressId}/`);
+}
+
+export const deleteTowniePin = async (towniePinId) => {
+    await api.delete(`tasks/pins/${towniePinId}/`);
 }
 
 export const incrementTrackedQuestAmount = async (questProgressId, amount) => {

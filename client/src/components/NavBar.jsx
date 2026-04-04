@@ -7,7 +7,7 @@ const navLinkClass = ({ isActive }) =>
       : 'text-white/90 hover:bg-white/20 hover:text-white'
   }`;
 
-export default function NavBar() {
+export default function NavBar({ user }) {
   return (
     <nav id="navbar">
       <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 border rounded-md">
@@ -19,8 +19,8 @@ export default function NavBar() {
         </Link>
 
         <div className="flex flex-wrap items-center justify-center gap-2">
-          <NavLink to="/townies" className={navLinkClass}>Townies</NavLink>
-          <NavLink to="/dashboard" className={navLinkClass}>Dashboard</NavLink>
+          {user && <NavLink to="/townies" className={navLinkClass}>Townies</NavLink>}
+          {user && <NavLink to="/dashboard" className={navLinkClass}>Dashboard</NavLink>}
         </div>
       </div>
     </nav>

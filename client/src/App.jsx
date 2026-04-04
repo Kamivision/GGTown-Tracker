@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar user={user} />
       <Outlet context={{ user, setUser }} />
     </>
   );

@@ -1,3 +1,6 @@
+from typing import cast
+
+from django.db import transaction
 from django.shortcuts import get_object_or_404
 from rest_framework import status as s
 from rest_framework.response import Response
@@ -49,15 +52,20 @@ class QuestProgressDetailView(UserView):
 
 class QuestProgressIncrementView(UserView):
 	def post(self, request, quest_progress_id):
-		quest_progress = get_object_or_404(
-			QuestProgress.objects.select_related('townie'),
-			id=quest_progress_id,
-			user=request.user,
-		)
 		serializer = QuestProgressIncrementSerializer(data=request.data)
 		serializer.is_valid(raise_exception=True)
-		quest_progress.current_amount += serializer.validated_data['amount']
-		quest_progress.save()
+		validated_data = cast(dict[str, int], serializer.validated_data)
+		amount = validated_data['amount']
+# Was getting a pylance error about current_amount not being defined on quest_progress, even though it is defined on the model. Found a workaround by using transaction.atomic wraps the fetch/update/save in select_for_update, avoiding potential lost updates.
+		with transaction.atomic():
+			quest_progress = get_object_or_404(
+				QuestProgress.objects.select_for_update().select_related('townie'),
+				id=quest_progress_id,
+				user=request.user,
+			)
+			quest_progress.current_amount += amount
+			quest_progress.save()
+
 		return Response(QuestProgressSerializer(quest_progress).data, status=s.HTTP_200_OK)
 
 

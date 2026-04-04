@@ -6,6 +6,7 @@ import App from "./App"
 import { userVerify } from './utilities'
 import Dashboard from './pages/Dashboard'
 import StyleTest from './pages/StyleTest'
+import RequireAuth from './components/RequireAuth'
 
 
 const router = createBrowserRouter([
@@ -20,11 +21,19 @@ const router = createBrowserRouter([
             },
              {
                 path:"townies",
-                element: <Townies />
+                element: (
+                    <RequireAuth>
+                        <Townies />
+                    </RequireAuth>
+                )
             },
              {
                 path:"dashboard",
-                element: <Dashboard />
+                element: (
+                    <RequireAuth>
+                        <Dashboard />
+                    </RequireAuth>
+                )
             },
              {
                 path:"test",
