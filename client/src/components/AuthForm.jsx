@@ -75,7 +75,7 @@ export default function AuthForm ({ setUser }) {
           className="h-4 w-4 accent-cyan-600"
         />
         <span className="text-sm font-medium">
-          {create ? "Log In?" : "Welcome Back!"}
+          {create ? "Uncheck to Log In" : "Welcome Back!"}
         </span>
       </label>
 
