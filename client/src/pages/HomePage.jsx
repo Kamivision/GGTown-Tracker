@@ -2,6 +2,7 @@ import { useOutletContext, useNavigate } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
 import logo from '../assets/GoGoTownTracker.png';
 import townArt from '../assets/townArt.jpg';
+import { handleLogout } from "../utilities";
 
 export default function HomePage() {
   const { user, setUser } = useOutletContext();

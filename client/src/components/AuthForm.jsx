@@ -23,7 +23,7 @@ export default function AuthForm ({ setUser }) {
         setCreate(true);
         setEmail('');
         setPassword('');
-        navigate('/dashboard');
+        navigate('/townies');
       } else {
         alert('Login/signup failed. Please try again.');
       }
@@ -36,7 +36,7 @@ export default function AuthForm ({ setUser }) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
       <h2 className="mb-1 text-center text-2xl font-semibold">
-        {create ? "Create an Account" : "Log In"} to View Your Dashboard!!
+        {create ? "Create an Account" : "Log In"} to View Your Townies!!
       </h2>
 
       <p className="text-sm text-slate-700">
