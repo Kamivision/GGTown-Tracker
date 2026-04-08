@@ -98,7 +98,7 @@ body {
 
 .quest-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(max(260px, 100%/4), 1fr));
   gap: 18px;
 }
 
